@@ -15,16 +15,18 @@ module.exports = {
       }
     }
   ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
-  plugins: ['prettier', 'unused-imports', '@stylistic'],
+  plugins: ['@typescript-eslint', 'prettier', 'unused-imports', '@stylistic'],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/triple-slash-reference': 'off',
     'prettier/prettier': 'warn',
-    'no-unused-vars': 'off', // or "@typescript-eslint/'unused-imports/no-unused-imports': 'warn',
+    'no-unused-vars': 'off',
     'unused-imports/no-unused-vars': [
       'warn',
       {
@@ -41,6 +43,7 @@ module.exports = {
         prev: ['*'],
         next: ['interface', 'type', 'export']
       }
-    ]
+    ],
+    'max-len': [0, 160, 2, { ignoreUrls: true }]
   }
 };
